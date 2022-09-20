@@ -1,0 +1,26 @@
+// write a program in c++ to Serch an items in an arry . //
+
+
+#include<iostream>
+using namespace std;
+int main (){
+    int n,si,i,count=0;
+    cout<< "Number of items you Entered : ";
+    cin>> n;
+    int arr[n];
+    cout << "You Entered Item: ";
+    for (i=0; i<n; i++){
+        cin>> arr[i];
+    }
+    cout<< "your search item : ";
+    cin>> si;
+    for(i=0;i<n; i++){
+        if (arr[i]==si){
+            cout<< "Item found at location arr["<<i<<"] = "<< arr[i];
+            count++;
+        }
+    }
+    if(count==0){
+        cout<< "Item not found";
+    }
+}
