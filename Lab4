@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-int stack[100], n=100, top=-1;
+int stack[100], n=100, top=-1, el,i;
 void push(int val) {
    if(top>=n-1)
    cout<<"Stack Overflow"<<endl;
@@ -25,6 +25,13 @@ void peek() {
     } else
    cout<<"Stack is empty";
 }
+void display(){
+    cout<< "Your stack is now = ";
+    for(i=0; i<el; i++){
+        cout<< stack[i]<< "  ";
+    }
+
+}
 int main() {
    int ch, val;
    cout<<"Press 1) Push in stack"<<endl;
@@ -32,13 +39,27 @@ int main() {
    cout<<"Press 3) Peek stack"<<endl;
    cout<<"Press 4) Exit"<<endl;
    do {
-      cout<<"Enter choice: "<<endl;
+      cout<<"\nEnter choice: ";
       cin>>ch;
       switch(ch) {
          case 1: {
-            cout<<"Enter value to be pushed:"<<endl;
-            cin>>val;
-            push(val);
+             cout<< "How many element you want : ";
+             cin>>el;
+             if (el<=100){
+                cout<<"Enter value to be pushed: ";
+                for(i=1; i<=el; i++){
+
+                    cin>>val;
+                    push(val);
+                }
+             }
+             else{
+                cout<< "Your stack size must be under 100"<<endl;
+                break;
+             }
+             display();
+
+
             break;
          }
          case 2: {
