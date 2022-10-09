@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
 int stack[100], n=100, top=-1, el,i;
-void push(int val) {
+ void push(int val) {
    if(top>=n-1)
-   cout<<"Stack Overflow"<<endl;
+    cout<<"Stack Overflow"<<endl;
    else {
       top++;
       stack[top]=val;
@@ -11,7 +11,7 @@ void push(int val) {
 }
 void pop() {
    if(top<=-1)
-   cout<<"Stack Underflow"<<endl;
+    cout<<"Stack Underflow"<<endl;
    else {
       cout<<"The popped element is "<< stack[top] <<endl;
       top--;
@@ -20,12 +20,12 @@ void pop() {
 void peek() {
    if(top>=0) {
        cout<<"The peek element is "<< stack[top] <<endl;
-      top--;
-
+ 
     } else
    cout<<"Stack is empty";
+
 }
-void display(){
+ void display(){
     cout<< "Your stack is now = ";
     for(i=0; i<el; i++){
         cout<< stack[i]<< "  ";
@@ -38,11 +38,11 @@ int main() {
    cout<<"Press 2) Pop from stack"<<endl;
    cout<<"Press 3) Peek stack"<<endl;
    cout<<"Press 4) Exit"<<endl;
-   do {
+    do {
       cout<<"\nEnter choice: ";
       cin>>ch;
-      switch(ch) {
-         case 1: {
+       switch(ch) {
+          case 1: {
              cout<< "How many element you want : ";
              cin>>el;
              if (el<=100){
