@@ -1,0 +1,85 @@
+ #include <iostream>
+using namespace std ;
+#define MAX 5
+int Queue[MAX];
+int count=0 , rear=-1, font =0;
+int i;
+int enqueue(int x){
+
+    if(count==MAX){
+        cout<< "The Queue is now full";
+    }
+    else{
+       rear = (rear+1)%MAX;
+       Queue[rear]=x;
+       count++ ;
+       return Queue[rear];
+    }
+}
+int dequeue(){
+    int temp;
+
+    if(count==0){
+        cout<< "Queue is already Empty ";
+        return 0;
+      }
+    else{
+            cout<< "Item Dequeued : ";
+           temp = Queue[font];
+            Queue[font]=-1;
+        font=(font+1)%MAX;
+        count--;
+        return temp;
+
+    }
+
+}
+void display(){
+    cout<< "Now your Queue is :";
+    for (i=0; i<MAX; i++){
+        cout<<" "<<Queue[i];
+    }
+    cout<<endl;
+    cout<< "Font = "<<font<<"  Reare = "<<rear<<"  Count =  " <<count<<endl;
+
+}
+int main(){
+    int op,val;
+     cout<< "Queue Operation "<<endl;
+     cout<< "Press 1 for Enqueue"<<endl;
+     cout<< "Press 2 for Dequeue"<<endl;
+     cout<< "Press 3 for Exit"<<endl;
+
+     do{
+
+     cout<< "\nEnter your option : ";
+        cin>>op;
+        switch(op){
+        case 1: {
+
+            cout<< "Enter value : ";
+            cin>>val;
+            cout<< "Item inserted "<< enqueue(val)<<endl;
+            display();
+            break;
+
+        }
+        case 2: {
+            cout<< dequeue()<<endl;
+
+            display();
+            break;
+        }
+        case 3: {
+            cout<<"Thank you"<<endl;
+            break;
+        }
+        default :{
+        cout<< "Invalid Option. Please Choose a valid option"<<endl;
+        }
+        }
+
+     }
+     while(op!=3);
+
+}
