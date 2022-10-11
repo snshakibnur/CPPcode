@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+#define MAX 5
+int stack1[MAX], stack2[MAX], top1=-1, top2=-1,i;
+int count=0;
+void push1(int val){
+    if(top1==MAX){
+        cout<< "Queue is already full"<<endl;
+    }
+    else{
+        top1++;
+        stack1[top1]=val;
+
+    }
+}
+void push2(int val){
+    if(top2==MAX){
+        cout<< "Queue is already full"<<endl;
+    }
+    else{
+        top2++;
+        stack2[top2]=val;
+
+    }
+}
+int pop1(){
+    int a;
+    if(top1==-1){
+        cout<< "Queue is already Empty"<<endl;
+    }
+    else{
+        a = stack1[top1];
+        top1--;
+
+        }
+        return a;
+}
+int pop2(){
+    int b;
+    if(top2==-1){
+        cout<< "Queue is already Empty..."<<endl;
+    }
+    else{
+        b = stack2[top2];
+        top2--;
+    }
+    return b;
+}
+
+void enqueue(int x){
+
+    push1(x);
+    cout<<"Enqueue element is "<<stack1[top1] <<endl;
+    count++;
+}
+void dequeue(){
+
+    int i;
+    for(i=0; i<count; i++){
+        push2(pop1());
+    }
+    cout<< "Dequeue item is "<<pop2()<<endl;
+    count=count-1;
+    for(i=0; i<count; i++){
+        push1(pop2());
+    }
+}
+
+int main(){
+enqueue(10);
+enqueue(20);
+dequeue();
+dequeue();
+
+}
