@@ -1,0 +1,73 @@
+#include <iostream >
+using namespace std;
+#define max 100
+int arr[max],i,data,pos, size=-1,op;
+void display(){
+    cout<< "Your Array is Now :   ";
+    for(i=0; i<size; i++){
+        cout<<arr[i]<< "   ";
+    }
+}
+
+int main(){
+
+    cout<< "What operation you want to do ? "<<endl;
+    cout<< "1. Insert Data in Array "<<endl;
+    cout<< "2. Delete Data from Array "<<endl;
+    cout<< "3. Exit operation "<<endl;
+     do{
+
+        cout<< "\n\nplease Enter your Option :  ";
+        cin>>op;
+        switch(op){
+        case 1:{
+
+            cout<< "How many data you want to insert  : ";
+            cin>>size;
+            cout<< "Enter "<<size<<" data : ";
+            for(i=0; i<size; i++){
+                cin>>arr[i];
+            }
+            display();
+            break;
+        }
+        case 2: {
+        if(size>=0){
+        cout<<"Enter data which you want to remove : " ;
+        cin>>data;
+        cout<< "Enter position of your data : ";
+        cin>>pos;
+        if(arr[pos-1]==data){
+            for(i=0;i<size; i++){
+            if(i<pos-1){
+                continue;
+            }
+            arr[i]=arr[i+1];
+        }
+        cout<<"Congratulations! you have successfully deleted "<<data<<" From your Array"<<endl;
+
+        size--;
+        display();
+        }
+        else{
+                cout<< "Oppss "<<data<< " is not in "<<pos << "th position or its a invalid data. please chose a valid position or valid data"<<endl;
+
+        }
+        }
+        else{
+            cout<< "You have no data, Please inset data first.";
+        }
+        break;
+
+        }
+        case 3: {
+        cout<< "Thank you, now your operation is close .";
+        }
+        default : {
+            cout<< "Invalid option. Please Choose a valid option "<<endl;
+        }
+        }
+     }
+     while(op!=3);
+
+}
