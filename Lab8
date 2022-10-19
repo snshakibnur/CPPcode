@@ -1,0 +1,93 @@
+#include<iostream>
+using namespace std;
+int arr[100],i,pos,id,ts,count=0;
+char op;
+//display current student list
+void display()
+{
+    for(i=0; i<ts; i++)
+    {
+        cout<<arr[i]<< "  ";
+    }
+}
+
+int main()
+{
+    cout<< "Enter number of student: ";
+    cin>>ts;
+    cout<< "Now present "<<ts<< " student in the class and they are : ";
+    for(i=0; i<ts; i++)
+    {
+        cin>>arr[i];
+    }
+    cout<< "\nTo Entry a new student press A.\nTo Delete a student press X."<<endl;
+
+    do
+    {
+        cout<< "\nYou select: ";
+        cin>>op;
+// student add operation
+
+        if(op=='a' || op=='A')
+        {
+            cout<< "\tEnter student ID: ";
+            cin>>id;
+            cout<< "\tEnter the position: ";
+            cin>>pos;
+            ts++;
+            for(i=ts; i>=pos; i--)
+            {
+                arr[i]=arr[i-1];
+            }
+            arr[pos-1]=id;
+            cout<< "\tAfter entry new student, total student is = "<<ts<< " and the are : ";
+            display();
+            cout<<endl;
+
+        }
+        // student remove operation;
+        
+        else if(op=='x' || op=='X')
+        {
+            cout<< "\tEnter student id who exit from the class room: ";
+            cin>>id;
+            // check deleted id is exist or not 
+            // when count ++ then id exist
+            for(i=0; i<ts; i++)
+            {
+                if(arr[i]==id)
+                    count ++;
+            }
+            //if count = 0, id doesn't exist
+            if(count ==0)
+            {
+                cout<< "\tStudent id "<<id<< " not found in  list"<<endl;
+            }
+            else
+            {
+                for(i=0; i<ts; i++)
+                {
+                    if(arr[i] !=id)
+                    {
+                        continue;
+                    }
+                    arr[i]=arr[i+1];
+
+                }
+                ts--;
+                cout<< "\tAfter exit new student, Total students is = "<<ts<< " and they are : ";
+                display();
+                cout<<endl;
+            }
+
+
+        }
+        else
+        {
+            cout << "Invalid option please choose a valid option "<<endl;
+        }
+
+    }
+    while(op=='a' || op=='A' || op=='x' || op=='X');
+
+}
