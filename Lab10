@@ -1,0 +1,171 @@
+#include <iostream>
+using namespace std;
+
+int InsertSort(int arr[], int size, char op)
+{
+
+    for(int step= 1; step<size; step++)
+    {
+        int i = step-1;
+        int key = arr[step];
+        if(op=='A' || op=='a')
+        {
+            while(key<arr[i] && i>=0)
+            {
+                arr[i+1]= arr[i];
+                i--;
+            }
+        }
+        else
+        {
+            while(key>arr[i] && i>=0)
+            {
+                arr[i+1]= arr[i];
+                i--;
+            }
+        }
+        arr[i+1]=key;
+
+    }
+    return arr[size];
+
+}
+
+int selectionSort(int arr[], int size, char op)
+{
+    for(int step=0; step<size-1; step++)
+    {
+        int min=step;
+        for(int i=step+1; i<size; i++)
+        {
+            if(op=='A'|| op=='a')
+            {
+                if(arr[i]<arr[min])
+                {
+                    min=i;
+                }
+
+            }
+            else
+                {
+                    if(arr[i]>arr[min])
+                    {
+                        min=i;
+                    }
+                }
+
+        }
+        if(min!=step)
+        {
+            int temp=arr[min];
+            arr[min]=arr[step];
+            arr[step]=temp;
+        }
+    }
+    return arr[size];
+
+}
+int bubbleSort(int arr[], int size, int op)
+{
+
+    for(int step=0; step<size; step++)
+    {
+        for(int i=0; i<size-1; i++)
+        {
+            if(op=='A' || op=='a')
+            {
+                if(arr[i+1]<arr[i])
+                {
+                    int temp=arr[i];
+                    arr[i]=arr[i+1];
+                    arr[i+1]=temp;
+                }
+            }
+            else
+            {
+                if(arr[i]<arr[i+1])
+                {
+                    int temp=arr[i];
+                    arr[i]=arr[i+1];
+                    arr[i+1]=temp;
+                }
+            }
+        }
+    }
+
+
+    return arr[size];
+}
+void display(int arr[], int size)
+{
+    for (int i=0; i<size; i++)
+    {
+        cout<< arr[i]<< "  ";
+    }
+    cout<<endl;
+}
+int main()
+{
+
+    int op;
+    char chose;
+    int arr[]= {54,12,98,1,76,2,87,47,32};
+    int size = sizeof(arr)/sizeof(int);
+    cout<< "The array is = ";
+    display(arr,size);
+
+    cout<< "This program sort this Array"<<endl;
+    cout<< "Chose a option."<<endl;
+    cout<< "Press 1 for Bubble sort"<<endl;
+    cout<< "Press 2 for Selection sort "<<endl;
+    cout<< "press 3 for Insertion Sort"<<endl;
+    cout<< "Press 4 for Exit"<<endl;
+
+    do
+    {
+        cout<< "\nYou Selected option: ";
+        cin>>op;
+        cout<<endl;
+        if(op<1 || op >4 ){
+                cout<< "Invalid Options. Please Choose a valid Option"<<endl;
+            continue;
+        }
+        if(op==4){
+                cout<< "The program Closed. Thank you"<<endl;
+            continue;
+        }
+
+        cout<< "Press A for  Ascending Order.\nPress D for Descending Order"<<endl;
+        cout<< "You Selected Order : ";
+        cin>>chose;
+        cout<<endl;
+        switch(op)
+        {
+
+        case 1:
+        {
+            cout<< "Before Bubble sort the array is = ";
+            arr[size]= bubbleSort(arr,size,chose);
+            display(arr,size);
+            break;
+        }
+        case 2:
+        {
+            cout<< "Before Selection Sort the array is = ";
+            arr[size]= selectionSort(arr,size,chose);
+            display(arr,size);
+            break;
+        }
+        case 3:
+        {
+            cout<< "Before Insertion Sort the array is = ";
+            arr[size]=InsertSort(arr,size,chose);
+            display(arr,size);
+            break;
+        }
+        }
+    }
+
+while(op!=4);
+
+}
